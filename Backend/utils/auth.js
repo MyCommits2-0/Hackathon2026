@@ -9,9 +9,7 @@ const result = require('../utils/result')
 const db = require('../db/pool')
 
 
-// =====================================
-// 1️⃣ LOGIN API
-// =====================================
+
 router.post('/login', async (req, res) => {
 
     const { email, password } = req.body
@@ -53,9 +51,7 @@ router.post('/login', async (req, res) => {
 })
 
 
-// =====================================
-// 2️⃣ Authenticate Middleware
-// =====================================
+
 function authUser(req, res, next) {
 
     if (
@@ -100,9 +96,7 @@ function authUser(req, res, next) {
 }
 
 
-// =====================================
-// 3️⃣ Role Authorization
-// =====================================
+
 function authorizeRoles(...allowedRoles) {
 
     return (req, res, next) => {

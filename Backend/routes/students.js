@@ -3,9 +3,7 @@ const router = express.Router();
 const db = require('../db/pool');
 
 
-// ==========================
-// 1️⃣ Create Student
-// ==========================
+
 router.post('/', async (req, res) => {
     try {
         const { name, email, phone } = req.body;
@@ -34,9 +32,7 @@ router.post('/', async (req, res) => {
 });
 
 
-// ==========================
-// 2️⃣ Get All Students
-// ==========================
+
 router.get('/', async (req, res) => {
     try {
         const [rows] = await db.query(
@@ -49,9 +45,6 @@ router.get('/', async (req, res) => {
 });
 
 
-// ==========================
-// 3️⃣ Get Student By ID
-// ==========================
 router.get('/:id', async (req, res) => {
     try {
         const [rows] = await db.query(
@@ -71,9 +64,6 @@ router.get('/:id', async (req, res) => {
 });
 
 
-// ==========================
-// 4️⃣ Update Student
-// ==========================
 router.put('/:id', async (req, res) => {
     try {
         const { name, email, phone } = req.body;
@@ -103,9 +93,7 @@ router.put('/:id', async (req, res) => {
 });
 
 
-// ==========================
-// 5️⃣ Delete Student
-// ==========================
+
 router.delete('/:id', async (req, res) => {
     try {
         const [result] = await db.query(

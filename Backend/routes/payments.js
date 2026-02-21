@@ -3,9 +3,7 @@ const router = express.Router();
 const db = require('../db/pool');
 
 
-// ==============================
-// 1️⃣ Create Payment
-// ==============================
+
 router.post('/', async (req, res) => {
 
     const connection = await db.getConnection();
@@ -107,9 +105,7 @@ router.post('/', async (req, res) => {
 });
 
 
-// ==============================
-// 2️⃣ Get Payments by Registration
-// ==============================
+
 router.get('/registration/:registration_id', async (req, res) => {
     try {
         const [rows] = await db.query(
@@ -125,9 +121,6 @@ router.get('/registration/:registration_id', async (req, res) => {
 });
 
 
-// ==============================
-// 3️⃣ Get All Payments
-// ==============================
 router.get('/', async (req, res) => {
     try {
         const [rows] = await db.query(`

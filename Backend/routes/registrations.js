@@ -10,9 +10,7 @@ function generateRegistrationCode() {
 }
 
 
-// ==============================
-// 1️⃣ Create Registration
-// ==============================
+
 router.post('/', async (req, res) => {
 
     const connection = await db.getConnection();

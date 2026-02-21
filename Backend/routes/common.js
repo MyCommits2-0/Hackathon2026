@@ -83,9 +83,9 @@ router.get('/student/:student_id/history', async (req, res) => {
                 IFNULL(SUM(p.amount_paid),0) AS total_paid,
                 r.status
             FROM students s
-            JOIN registrations r ON r.student_id = s.id
-            JOIN courses c ON r.course_id = c.id
-            JOIN batches b ON r.batch_id = b.id
+            JOIN registrations r ON r.id = s.id
+            JOIN courses c ON r.id = c.id
+            JOIN batches b ON r.id = b.id
             LEFT JOIN payments p 
                 ON p.registration_id = r.id
                 AND p.payment_status = 'SUCCESS'

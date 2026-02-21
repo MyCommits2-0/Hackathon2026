@@ -17,6 +17,27 @@ CREATE TABLE students (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+
+
+CREATE TABLE payments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    registration_id INT NOT NULL,
+
+    amount_paid DECIMAL(10,2) NOT NULL,
+
+    payment_mode ENUM('CASH','UPI','CARD','NETBANKING') NOT NULL,
+
+    payment_status ENUM('SUCCESS','FAILED','PENDING') DEFAULT 'SUCCESS',
+
+    transaction_reference VARCHAR(100),
+
+    paid_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (registration_id)
+        REFERENCES registrations(id)
+        ON DELETE CASCADE
+);
 -- =====================================================
 -- 2️⃣ COURSES TABLE
 -- =====================================================
@@ -128,6 +149,15 @@ CREATE TABLE discount_students (
     UNIQUE (discount_id, student_id)
 );
 
+
+
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin','student') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 -- =====================================================
 -- 9️⃣ DISCOUNT - COMBO BATCHES TABLE
 -- =====================================================

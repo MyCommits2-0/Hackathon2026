@@ -21,8 +21,10 @@ app.use(express.json());
 // Auth Middleware
 // ======================
 
-const { authUser, checkAuthorization } = require('./utils/auth');
+const { router: authRouter, authUser } = require('./utils/auth')
 
+app.use('/auth', authRouter)   // login route
+app.use(authUser)              // middleware
 // ======================
 // Routes
 // ======================
@@ -36,10 +38,11 @@ const paymentRouter = require('./routes/payments');
 const commonRouter = require('./routes/common');
 
 // Public routes
-app.use("/", commonRouter);
+// app.use("/", commonRouter);
+app.use('/common', commonRouter);
 
 // Protected routes
-app.use(authUser);
+
 
 app.use('/students', studentRouter);
 app.use('/courses', courseRouter);

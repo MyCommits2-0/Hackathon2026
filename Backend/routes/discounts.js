@@ -3,9 +3,7 @@ const router = express.Router();
 const db = require('../db/pool');
 
 
-// ==========================
-// 1️⃣ Create Discount
-// ==========================
+
 router.post('/', async (req, res) => {
     try {
         const {
@@ -43,9 +41,7 @@ router.post('/', async (req, res) => {
 });
 
 
-// ==========================
-// 2️⃣ Get All Discounts
-// ==========================
+
 router.get('/', async (req, res) => {
     try {
         const [rows] = await db.query(
@@ -58,9 +54,7 @@ router.get('/', async (req, res) => {
 });
 
 
-// ==========================
-// 3️⃣ Get Discount By ID
-// ==========================
+
 router.get('/:id', async (req, res) => {
     try {
         const [rows] = await db.query(
@@ -80,9 +74,7 @@ router.get('/:id', async (req, res) => {
 });
 
 
-// ==========================
-// 4️⃣ Update Discount
-// ==========================
+
 router.put('/:id', async (req, res) => {
     try {
         const {
@@ -129,9 +121,6 @@ router.put('/:id', async (req, res) => {
 });
 
 
-// ==========================
-// 5️⃣ Delete Discount
-// ==========================
 router.delete('/:id', async (req, res) => {
     try {
         const [result] = await db.query(
@@ -150,10 +139,6 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-
-// ==========================
-// 6️⃣ Toggle Active/Inactive
-// ==========================
 router.patch('/:id/toggle', async (req, res) => {
     try {
         const [rows] = await db.query(
